@@ -22,7 +22,7 @@ Here is a good spot for a message to your readers to let them know how best to r
 - 📧 [Email Me](mailto:jaavid.malette@gmail.com)
 - 🐙 [GitHub](https://github.com/popcawn)
 
-<form action="https://formspree.io/f/{https://formspree.io/f/mldrzpen}" method="POST">
+<form action="https://formspree.io/f/mldrzpen" method="POST">
     <label for="name">Name</label><br>
     <input type="text" id="name" name="name"><br>
     <label for="email">Email</label><br>
