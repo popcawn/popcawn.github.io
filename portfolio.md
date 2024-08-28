@@ -2,6 +2,6 @@
 
 ## Incident Response Plan (IRP) Project
 
-This project involves creating a comprehensive Incident Response Plan (IRP) for Rove, a commercial flight company.
+This project involves developing a comprehensive Incident Response Plan (IRP) for Rove, a fictional commercial flight company.
 
 [View the full project](Rove Incident Response Plan (IRP).pdf)
