@@ -15,6 +15,24 @@ There should be whitespace between paragraphs. We recommend including a README, 
 - [Home](./index.md)
 - [Portfolio](./portfolio.md)  <!-- Link to your new portfolio page -->
 
+## Get in Touch
+
+Here is a good spot for a message to your readers to let them know how best to reach out to you.
+
+- 📧 [Email Me](mailto:jaavid.malette@gmail.com)
+- 🐙 [GitHub](https://github.com/popcawn)
+
+<form action="https://formspree.io/f/{https://formspree.io/f/mldrzpen}" method="POST">
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="email">Email</label><br>
+    <input type="email" id="email" name="email"><br>
+    <label for="message">Message</label><br>
+    <textarea id="message" name="message"></textarea><br>
+    <input type="submit" value="Send Message">
+</form>
+
+
 # Header 1
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
