@@ -2,32 +2,34 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
+<nav>
+    <a href="./index.md">Home</a>
+    <a href="./portfolio.md">Portfolio</a>
+    <a href="./contact.md">Contact</a>
+</nav>
 
-[Link to another page](./another-page.html).
+# Welcome to My Portfolio
 
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-## Navigation
-
-- [Home](./index.md)
-- [Portfolio](./portfolio.md)  <!-- Link to your new portfolio page -->
+Welcome to my personal portfolio website! Here you can find information about my projects, skills, and how to get in touch with me.
 
 ## Get in Touch
 
-Here is a good spot for a message to your readers to let them know how best to reach out to you.
+<p>If you'd like to reach out, feel free to contact me through any of the following methods:</p>
+<ul>
+    <li>📧 <a href="mailto:your-email@example.com">Email Me</a></li>
+    <li>🐙 <a href="https://github.com/yourusername">GitHub</a></li>
+</ul>
 
-- 📧 [Email Me](mailto:jaavid.malette@gmail.com)
-- 🐙 [GitHub](https://github.com/popcawn)
-
-<form action="https://formspree.io/f/mldrzpen/submit" method="POST">
+<form action="https://formspree.io/f/mldrzpen" method="POST">
     <label for="name">Name</label><br>
-    <input type="text" id="name" name="name"><br>
+    <input type="text" id="name" name="name" placeholder="Your Name"><br>
     <label for="email">Email</label><br>
-    <input type="email" id="email" name="email"><br>
+    <input type="email" id="email" name="email" placeholder="Your Email"><br>
     <label for="message">Message</label><br>
-    <textarea id="message" name="message"></textarea><br>
+    <textarea id="message" name="message" placeholder="Your Message"></textarea><br>
     <input type="submit" value="Send Message">
 </form>
+
+<footer>
+    <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+</footer>
