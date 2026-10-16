@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prop Sims</title>
+<style>
+  :root{--bg:#0a0e13;--panel:#121923;--panel2:#18212d;--line2:#2a3849;--ink:#e8eef6;--ink2:#a8b6c7;--ink3:#7c8b9d;--accent:#4da3ff;--good:#34d399;--bad:#f87171}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center}
+  main{width:100%;max-width:520px;padding:24px 16px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--ink3);font-size:13px;margin-bottom:18px}
+  .pot{background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+  .pot b{font-size:26px}
+  .pot small{display:block;color:var(--ink3);font-size:12.5px;margin-top:2px}
+  a.sport{display:flex;align-items:center;gap:14px;background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:16px 18px;margin:0 0 10px;color:var(--ink);text-decoration:none;font-weight:800;font-size:18px}
+  a.sport:hover{border-color:var(--accent)}
+  a.sport span.e{font-size:28px}
+  a.sport small{display:block;color:var(--ink3);font-weight:400;font-size:12.5px}
+  a.sport .open{margin-left:auto;font-size:12px;color:var(--accent);font-weight:800}
+  .ev-pos{color:var(--good)} .ev-neg{color:var(--bad)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Prop Sims</h1>
+  <div class="sub">One bankroll for every sport. Tap a sport.</div>
+  <div class="pot" id="pot"></div>
+  <a class="sport" href="/nfl-td-predictor/"><span class="e">🏈</span><div>NFL<small>anytime TDs · player props · fun picks</small></div><span class="open" id="o_nfl"></span></a>
+  <a class="sport" href="/nba-prop-predictor/"><span class="e">🏀</span><div>NBA<small>points · rebounds · assists · threes · PRA</small></div><span class="open" id="o_nba"></span></a>
+  <a class="sport" href="/nhl-prop-predictor/"><span class="e">🏒</span><div>NHL<small>shots on goal · points · anytime goal (shown)</small></div><span class="open" id="o_nhl"></span></a>
+</main>
+<script>
+// the front door: reads the apps' shared storage (same site) — the pot (nfltd_bank) and each sport's open bets
+(function(){
+  const lsJ=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:JSON.parse(v); }catch(e){ return d; } };
+  const dec=s=>{ const a=parseFloat(String(s).replace('−','-')); return a>0?1+a/100:a<0?1+100/-a:1; };
+  const fmt=x=>{ const a=Math.abs(x); return (x<0?'−':'')+'$'+(a>=20?Math.round(a).toLocaleString():a.toFixed(2)); };
+  const B=lsJ('nfltd_bank',{})||{}, S={nfl:'nfltd_bets', nba:'nbap_bets', nhl:'nhlp_bets'};
+  let pl=0, open=0;
+  for(const [k,key] of Object.entries(S)){ const L=lsJ(key,[])||[]; let o=0;
+    for(const b of L){ if(b.result==='pending'){ o++; continue; } if(B.amt&&b.st>B.at){ const u=b.usd!=null?+b.usd:(+b.stake||0)*B.amt/100; pl+=b.result==='win'?u*(dec(b.odds)-1):b.result==='loss'?-u:0; } }
+    open+=o; const el=document.getElementById('o_'+k); if(el&&o) el.textContent=o+' open'; }
+  document.getElementById('pot').innerHTML=B.amt
+    ? `💰 <b>${fmt(Math.max(0,B.amt+pl))}</b><small><span class="${pl>0?'ev-pos':pl<0?'ev-neg':''}">${pl>=0?'+':''}${fmt(pl)}</span> since ${new Date(B.at).toLocaleDateString([], {month:'short', day:'numeric'})}${open?` · ${open} open bet${open>1?'s':''}`:''}</small>`
+    : '💰 <b style="font-size:16px">Set your bankroll in any sport</b><small>it becomes one pot for all three</small>';
+})();
+</script>
+</body>
+</html>
