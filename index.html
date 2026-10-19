@@ -4,27 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Prop Sims</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<script>try{ if(localStorage.getItem('sims_theme')==='dim') document.documentElement.dataset.theme='dim'; }catch(e){}</script>
 <style>
-  :root{--bg:#0a0e13;--panel:#121923;--panel2:#18212d;--line2:#2a3849;--ink:#e8eef6;--ink2:#a8b6c7;--ink3:#7c8b9d;--accent:#4da3ff;--good:#34d399;--bad:#f87171}
+  /* the sims' look: light by default, 🌙 dim when you picked it in any sport */
+  :root{--bg:#eef2f8;--panel:#ffffff;--panel2:#f4f7fb;--line:#e2e8f0;--line2:#d2dbe7;--ink:#0f1726;--ink2:#3b485c;--ink3:#66758b;--accent:#2f6fe4;--accent2:#6a55f0;--good:#0b9a5e;--bad:#d93a48;
+    --shadow:0 1px 2px rgba(15,23,38,.05),0 10px 28px -16px rgba(15,23,38,.22)}
+  :root[data-theme="dim"]{--bg:#121822;--panel:#1b2332;--panel2:#232d40;--line:#2b3649;--line2:#38465e;--ink:#eef3fa;--ink2:#b6c2d4;--ink3:#8b99ae;--accent:#5aa2ff;--accent2:#8f84ff;--good:#2fd38c;--bad:#ff6b6b;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -16px rgba(0,0,0,.65)}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center}
-  main{width:100%;max-width:520px;padding:24px 16px}
-  h1{font-size:22px;margin:0 0 4px}
-  .sub{color:var(--ink3);font-size:13px;margin-bottom:18px}
-  .pot{background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:14px 16px;margin-bottom:16px}
-  .pot b{font-size:26px}
-  .pot small{display:block;color:var(--ink3);font-size:12.5px;margin-top:2px}
-  a.sport{display:flex;align-items:center;gap:14px;background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:16px 18px;margin:0 0 10px;color:var(--ink);text-decoration:none;font-weight:800;font-size:18px}
-  a.sport:hover{border-color:var(--accent)}
-  a.sport span.e{font-size:28px}
-  a.sport small{display:block;color:var(--ink3);font-weight:400;font-size:12.5px}
-  a.sport .open{margin-left:auto;font-size:12px;color:var(--accent);font-weight:800}
+  body{margin:0;color:var(--ink);font:16px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(900px 500px at 0% -8%,rgba(47,111,228,.12),transparent 60%),radial-gradient(800px 460px at 100% 0%,rgba(106,85,240,.10),transparent 60%),var(--bg)}
+  main{width:100%;max-width:560px;padding:28px 16px}
+  h1{font-family:"Space Grotesk",Inter,sans-serif;font-size:30px;letter-spacing:-.5px;margin:0 0 4px;display:flex;align-items:center;gap:12px}
+  h1 i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 8px 20px -8px var(--accent)}
+  .sub{color:var(--ink3);font-size:14px;margin-bottom:20px}
+  .pot{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin-bottom:16px;box-shadow:var(--shadow)}
+  .pot b{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:30px;letter-spacing:-1px}
+  .pot small{display:block;color:var(--ink3);font-size:13.5px;margin-top:2px}
+  a.sport{display:flex;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:0 0 12px;color:var(--ink);text-decoration:none;font-weight:800;font-size:19px;box-shadow:var(--shadow);transition:transform .12s,border-color .12s}
+  a.sport:hover{border-color:var(--accent);transform:translateY(-2px)}
+  a.sport span.e{font-size:30px}
+  a.sport small{display:block;color:var(--ink3);font-weight:500;font-size:13px}
+  a.sport .open{margin-left:auto;font-size:13px;color:var(--accent);font-weight:800;white-space:nowrap}
   .ev-pos{color:var(--good)} .ev-neg{color:var(--bad)}
 </style>
 </head>
 <body>
 <main>
-  <h1>Prop Sims</h1>
+  <h1><i></i>Prop Sims</h1>
   <div class="sub">One bankroll for every sport. Tap a sport.</div>
   <div class="pot" id="pot"></div>
   <a class="sport" href="/nfl-td-predictor/"><span class="e">🏈</span><div>NFL<small>anytime TDs · player props · fun picks</small></div><span class="open" id="o_nfl"></span></a>
