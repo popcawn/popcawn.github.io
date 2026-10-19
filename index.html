@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Prop Sims</title>
+<title>PROP SIM</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232f6fe4'/%3E%3Cstop offset='1' stop-color='%236a55f0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3C/svg%3E">
+<script type="speculationrules">{"prefetch":[{"source":"document","where":{"selector_matches":".sportbar a, a.sport, a.brand"},"eagerness":"moderate"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <script>try{ if(localStorage.getItem('sims_theme')==='dim') document.documentElement.dataset.theme='dim'; }catch(e){}</script>
@@ -29,16 +31,17 @@
   a.sport small{display:block;color:var(--ink3);font-weight:500;font-size:13px}
   a.sport .open{margin-left:auto;font-size:13px;color:var(--accent);font-weight:800;white-space:nowrap}
   .ev-pos{color:var(--good)} .ev-neg{color:var(--bad)}
+  @view-transition{navigation:auto}
 </style>
 </head>
 <body>
 <main>
-  <h1><i></i>Prop Sims</h1>
+  <h1><i></i>PROP SIM</h1>
   <div class="sub">One bankroll for every sport. Tap a sport.</div>
   <div class="pot" id="pot"></div>
-  <a class="sport" href="/nfl-td-predictor/"><span class="e">🏈</span><div>NFL<small>anytime TDs · player props · fun picks</small></div><span class="open" id="o_nfl"></span></a>
-  <a class="sport" href="/nba-prop-predictor/"><span class="e">🏀</span><div>NBA<small>points · rebounds · assists · threes · PRA</small></div><span class="open" id="o_nba"></span></a>
-  <a class="sport" href="/nhl-prop-predictor/"><span class="e">🏒</span><div>NHL<small>shots on goal · points · anytime goal (shown)</small></div><span class="open" id="o_nhl"></span></a>
+  <a class="sport" href="/nfl-td-predictor/nfl-td-predictor.html"><span class="e">🏈</span><div>NFL<small>anytime TDs · player props · fun picks</small></div><span class="open" id="o_nfl"></span></a>
+  <a class="sport" href="/nba-prop-predictor/nba-prop-predictor.html"><span class="e">🏀</span><div>NBA<small>points · rebounds · assists · threes · PRA</small></div><span class="open" id="o_nba"></span></a>
+  <a class="sport" href="/nhl-prop-predictor/nhl-prop-predictor.html"><span class="e">🏒</span><div>NHL<small>shots on goal · points · anytime goal (shown)</small></div><span class="open" id="o_nhl"></span></a>
 </main>
 <script>
 // the front door: reads the apps' shared storage (same site) — the pot (nfltd_bank) and each sport's open bets
