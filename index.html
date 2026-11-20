@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PROP SIM</title>
+<title>LINE SHOP</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232f6fe4'/%3E%3Cstop offset='1' stop-color='%236a55f0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3C/svg%3E">
 <script type="speculationrules">{"prerender":[{"source":"document","where":{"selector_matches":".sportbar a:not(.on), a.sport"},"eagerness":"moderate"}],"prefetch":[{"source":"document","where":{"selector_matches":"a.brand"},"eagerness":"moderate"}]}</script>
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -16,7 +16,7 @@
 </style>
 <script>try{ if(localStorage.getItem('sims_theme')==='dim') document.documentElement.dataset.theme='dim'; }catch(e){}</script>
 <style>
-  /* the sims' look: light by default, 🌙 dim when you picked it in any sport */
+  /* LINE SHOP's look: light by default, 🌙 dim when you picked it in any sport */
   :root{--bg:#eef2f8;--panel:#ffffff;--panel2:#f4f7fb;--line:#e2e8f0;--line2:#d2dbe7;--ink:#0f1726;--ink2:#3b485c;--ink3:#66758b;--accent:#2f6fe4;--accent2:#6a55f0;--good:#0b9a5e;--bad:#d93a48;
     --shadow:0 1px 2px rgba(15,23,38,.05),0 10px 28px -16px rgba(15,23,38,.22)}
   :root[data-theme="dim"]{--bg:#121822;--panel:#1b2332;--panel2:#232d40;--line:#2b3649;--line2:#38465e;--ink:#eef3fa;--ink2:#b6c2d4;--ink3:#8b99ae;--accent:#5aa2ff;--accent2:#8f84ff;--good:#2fd38c;--bad:#ff6b6b;
@@ -43,12 +43,13 @@
 </head>
 <body>
 <main>
-  <h1><i></i>PROP SIM</h1>
-  <div class="sub">One bankroll for every sport. Tap a sport.</div>
+  <h1><i></i>LINE SHOP</h1>
+  <div class="sub">Every book's price, one bankroll for every sport. Tap a sport.</div>
   <div class="pot" id="pot"></div>
   <a class="sport" href="/nfl-td-predictor/nfl-td-predictor.html"><span class="e">🏈</span><div>NFL<small>anytime TDs · player props · fun picks</small></div><span class="open" id="o_nfl"></span></a>
   <a class="sport" href="/nba-prop-predictor/nba-prop-predictor.html"><span class="e">🏀</span><div>NBA<small>points · rebounds · assists · threes · PRA</small></div><span class="open" id="o_nba"></span></a>
   <a class="sport" href="/nhl-prop-predictor/nhl-prop-predictor.html"><span class="e">🏒</span><div>NHL<small>shots on goal · points · anytime goal (shown)</small></div><span class="open" id="o_nhl"></span></a>
+  <a class="sport" href="/ufc-fight-simulator/"><span class="e">🥊</span><div>UFC<small>moneylines · two models must agree</small></div><span class="open" id="o_ufc"></span></a>
 </main>
 <script>
 // the front door: reads the apps' shared storage (same site) — the pot (nfltd_bank) and each sport's open bets
@@ -56,14 +57,14 @@
   const lsJ=(k,d)=>{ try{ const v=localStorage.getItem(k); return v==null?d:JSON.parse(v); }catch(e){ return d; } };
   const dec=s=>{ const a=parseFloat(String(s).replace('−','-')); return a>0?1+a/100:a<0?1+100/-a:1; };
   const fmt=x=>{ const a=Math.abs(x); return (x<0?'−':'')+'$'+(a>=20?Math.round(a).toLocaleString():a.toFixed(2)); };
-  const B=lsJ('nfltd_bank',{})||{}, S={nfl:'nfltd_bets', nba:'nbap_bets', nhl:'nhlp_bets'};
+  const B=lsJ('nfltd_bank',{})||{}, S={nfl:'nfltd_bets', nba:'nbap_bets', nhl:'nhlp_bets', ufc:'ufcs_bets'};
   let pl=0, open=0;
   for(const [k,key] of Object.entries(S)){ const L=lsJ(key,[])||[]; let o=0;
     for(const b of L){ if(b.result==='pending'){ o++; continue; } if(B.amt&&b.st>B.at){ const u=b.usd!=null?+b.usd:(+b.stake||0)*B.amt/100; pl+=b.result==='win'?u*(dec(b.odds)-1):b.result==='loss'?-u:0; } }
     open+=o; const el=document.getElementById('o_'+k); if(el&&o) el.textContent=o+' open'; }
   document.getElementById('pot').innerHTML=B.amt
     ? `💰 <b>${fmt(Math.max(0,B.amt+pl))}</b><small><span class="${pl>0?'ev-pos':pl<0?'ev-neg':''}">${pl>=0?'+':''}${fmt(pl)}</span> since ${new Date(B.at).toLocaleDateString([], {month:'short', day:'numeric'})}${open?` · ${open} open bet${open>1?'s':''}`:''}</small>`
-    : '💰 <b style="font-size:16px">Set your bankroll in any sport</b><small>it becomes one pot for all three</small>';
+    : '💰 <b style="font-size:16px">Set your bankroll in any sport</b><small>it becomes one pot for every sport</small>';
 })();
 </script>
 </body>
